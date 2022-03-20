@@ -13,7 +13,7 @@ class EmptyCell:
   def move(self,*c):self.coords=c;return self
 class Cell(EmptyCell):
   def __init__(self,x,y,v=0):self.move(x,y).value=v or 2*_random.randint(1,2)
-  __bool__=lambda s:1>0;is_empty=False;__eq__=lambda s,o:not[*{hash(s),hash(o)}][1:];__hash__=lambda s:hash(s.coords);colour=lambda s,T:(lambda r,g,b,t:rgb(r,g,b,1,1)(rgb(t,t,t)(T)))(*COLOURS[int(s)])
+  __bool__=lambda s:1>0;is_empty=False;__eq__=lambda s,o:not[*{hash(s),hash(o)}][1:];__hash__=lambda s:int(s);colour=lambda s,T:(lambda r,g,b,t:rgb(r,g,b,1,1)(rgb(t,t,t)(T)))(*COLOURS[int(s)])
 class Engine:
   def __init__(self):
     self.matrix=[[EmptyCell(i,j)for i in range(4)]for j in range(4)];r=lambda:(lambda l:(l(),l()))(lambda:_random.randint(0,3));f=lambda:Cell(*r(),2);a=f(),f()
